@@ -76,11 +76,21 @@ button:hover {
 
 body {
   margin: 0;
-  padding: 0;
-  overflow: hidden;
+  display: block; /* Change from flex */
+  min-width: 320px;
+  min-height: 100vh;
 }
 
 #root {
-  height: 100vh;
-  width: 100vw;
+  min-height: 100vh;
+  width: 100%;
+  overflow-y: auto; /* Add this */
+}
+
+/* Add these new styles */
+.scroll-container {
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
 }

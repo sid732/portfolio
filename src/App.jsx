@@ -11,20 +11,17 @@ import BackgroundEffect from './components/layout/BackgroundEffect';
 function App() {
   return (
     <Router>
-      <div className="w-full min-h-screen bg-[#1a1625] relative overflow-hidden">
+      <div className="w-full min-h-screen bg-[#1a1625] relative">
         <BackgroundEffect />
-        <AnimatePresence mode='wait'>
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            {/* <Route path="/experience" element={<Experience />} />
-            <Route path="/projects" element={<Projects />} />
-            <Route path="/skills" element={<Skills />} />
-            <Route path="/contact" element={<Contact />} /> */}
-          </Routes>
-        </AnimatePresence>
+        <div className="h-full overflow-y-auto">
+          <AnimatePresence mode='wait'>
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+            </Routes>
+          </AnimatePresence>
+        </div>
       </div>
     </Router>
   );
 }
-
 export default App;
