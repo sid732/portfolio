@@ -30,13 +30,14 @@ const TechStack = () => {
     ];
 
     return (
-        <div className="mt-20 px-4">
+        <div className="mt-20 px-4 ">
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 className=" "
             >
-                <div className="left-[20%] mb-16 relative mt-10">
+                <div className="ml-[20%]  mb-16  mt-10">
+                <p className="text-xl text-white">A</p>
                     <h1 className=" text-7xl md:text-8xl font-light text-purple-400 mb-4">
                         Fullstack
                     </h1>
@@ -49,7 +50,7 @@ const TechStack = () => {
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
                 >
-                    <div className="flex gap-2 mb-3">
+                    <div className="flex gap-2 mb-3 ">
                         <div className="w-3 h-3 rounded-full bg-red-500" />
                         <div className="w-3 h-3 rounded-full bg-yellow-500" />
                         <div className="w-3 h-3 rounded-full bg-green-500" />
@@ -79,16 +80,7 @@ const TechStack = () => {
                     ))}
                 </div>
 
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 1 }}
-                    className="text-right"
-                >
-                    <h2 className="text-2xl text-purple-400">Building</h2>
-                    <h2 className="text-5xl md:text-6xl text-purple-400 mb-2">seamless</h2>
-                    <p className="text-purple-600">full-stack applications.</p>
-                </motion.div>
+               
             </motion.div>
         </div>
     );
