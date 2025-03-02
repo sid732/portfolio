@@ -165,7 +165,7 @@ const WorkExperience = () => {
           </motion.p>
         </motion.div>
 
-        <div className="relative max-w-6xl mx-auto">
+        <div className="relative max-w-7xl mx-auto">
           <motion.div 
             className="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full border-l-2 border-gray-700"
             initial={{ height: 0 }}
@@ -207,14 +207,20 @@ const WorkExperience = () => {
                 />
               </motion.div>
 
-              <motion.div
-                className={`hidden md:block absolute top-1/2 w-4 h-4 rounded-full bg-purple-500
-                  ${index % 2 === 0 ? 'right-0 translate-x-[200%]' : 'left-0 -translate-x-[200%]'}`}
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                transition={{ delay: index * 0.3 }}
-                whileHover={{ scale: 1.5, backgroundColor: "#a855f7" }}
-              />
+             <motion.div
+  className={`hidden md:block absolute top-1/2 w-4 h-4 rounded-full bg-purple-500
+    ${index % 2 === 0 ? 
+      'right-0 translate-x-[50%]' : 
+      'left-0 -translate-x-[50%]'}`}
+  initial={{ scale: 0 }}
+  animate={{ scale: 1 }}
+  transition={{ delay: index * 0.3 }}
+  whileHover={{ scale: 1.5, backgroundColor: "#a855f7" }}
+  style={{
+    transform: `translate(${index % 2 === 0 ? '50%' : '-50%'}, -50%)`,
+    zIndex: 10
+  }}
+/>
               
               <motion.div 
                 className="p-6 font-mono"
@@ -228,7 +234,7 @@ const WorkExperience = () => {
                     ❯
                   </motion.span>
                   <motion.h2 
-                    className="ml-2 text-xl md:text-2xl font-semibold text-white"
+                    className="ml-2 text-xl md:text-4xl font-semibold text-white"
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.2 }}
@@ -239,15 +245,15 @@ const WorkExperience = () => {
                 </div>
                 <div className="ml-4">
                   <motion.h3 
-                    className="text-lg md:text-xl text-purple-400"
+                    className="text-lg md:text-2xl text-purple-400"
                     whileHover={{ scale: 1.02 }}
                   >
                     {experience.company}
                   </motion.h3>
-                  <motion.p className="text-sm text-gray-500">
+                  <motion.p className="text-xl text-gray-500">
                     {experience.duration}
                   </motion.p>
-                  <motion.ul className="mt-4 space-y-2">
+                  <motion.ul className="text-xl mt-4 space-y-2">
                     {experience.description.map((point, i) => (
                       <motion.li
                         key={i}
@@ -259,7 +265,7 @@ const WorkExperience = () => {
                         whileHover={{ x: 10 }}
                       >
                         <motion.span 
-                          className="text-purple-400 mr-2"
+                          className="text-xl text-purple-400 mr-2"
                           whileHover={{ scale: 1.2, rotate: 180 }}
                         >
                           ▹
@@ -275,7 +281,7 @@ const WorkExperience = () => {
                         custom={i}
                         variants={techBadgeVariants}
                         whileHover="hover"
-                        className="px-3 py-1 text-sm rounded-full bg-purple-500/20 text-purple-300 cursor-pointer"
+                        className="px-3 py-1 text-xl rounded-full bg-purple-500/20 text-purple-300 cursor-pointer"
                         whileTap={{ scale: 0.95 }}
                       >
                         {tech}
