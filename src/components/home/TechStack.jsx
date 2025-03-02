@@ -1,4 +1,3 @@
-// components/home/TechStack.jsx
 import { motion } from 'framer-motion';
 import {
     SiDjango,
@@ -30,39 +29,46 @@ const TechStack = () => {
     ];
 
     return (
-        <div className="mt-20 px-4 ">
+        <div className="mt-20 px-4">
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 className=" "
             >
-                <div className="ml-[20%]  mb-16  mt-10">
-                <p className="text-xl text-white">A</p>
-                    <h1 className=" text-7xl md:text-8xl font-light text-purple-400 mb-4">
+                <div className="ml-[10%] md:ml-[20%] mb-16 mt-10">
+                    <p className="text-xl text-white">A</p>
+                    <h1 className="text-5xl md:text-7xl font-light text-purple-400 mb-4">
                         Fullstack
                     </h1>
-                    <p className="text-3xl text-purple-600">Developer</p>
+                    <p className="text-2xl md:text-3xl text-purple-600">Developer</p>
                 </div>
 
                 {/* Terminal Window */}
-                <motion.div
-                    className="left-[35%] max-w-xl bg-[#ffffff11] rounded-lg p-6 font-mono text-sm mb-8 relative"
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                >
-                    <div className="flex gap-2 mb-3 ">
-                        <div className="w-3 h-3 rounded-full bg-red-500" />
-                        <div className="w-3 h-3 rounded-full bg-yellow-500" />
-                        <div className="w-3 h-3 rounded-full bg-green-500" />
-                    </div>
-                    <pre className="text-gray-300">
-                        {codeSnippet}
-                    </pre>
+<motion.div
+    className="mx-auto max-w-xl bg-[#1e1e1e] rounded-lg shadow-lg mb-8 relative"
+    initial={{ opacity: 0, scale: 0.95 }}
+    animate={{ opacity: 1, scale: 1 }}
+>
+    {/* Terminal Window Header */}
+    <div className="bg-[#2d2d2d] rounded-t-lg p-2 flex items-center gap-2">
+        <div className="w-3 h-3 rounded-full bg-red-500" />
+        <div className="w-3 h-3 rounded-full bg-yellow-500" />
+        <div className="w-3 h-3 rounded-full bg-green-500" />
+    </div>
 
-                </motion.div>
+    {/* Terminal Window Content */}
+    <div className="p-6 font-mono">
+        <div className="flex items-center mb-2">
+            <span className="text-green-400">❯</span>
+            <pre className="ml-2 text-gray-300 whitespace-pre-wrap">
+                {codeSnippet}
+            </pre>
+        </div>
+    </div>
+</motion.div>
 
                 {/* Tech Icons Grid */}
-                <div className="left-[30%] relative max-w-3xl grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
+                <div className=" md:left-[30%] relative max-w-3xl grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
                     {technologies.map(({ name, Icon, color }, index) => (
                         <motion.div
                             key={name}
@@ -79,8 +85,6 @@ const TechStack = () => {
                         </motion.div>
                     ))}
                 </div>
-
-               
             </motion.div>
         </div>
     );

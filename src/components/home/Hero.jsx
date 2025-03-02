@@ -1,4 +1,3 @@
-// components/home/Hero.jsx
 import { motion } from 'framer-motion';
 
 const Hero = () => {
@@ -17,10 +16,10 @@ const Hero = () => {
         >
           Hi There, I'm
         </motion.div>
-        <h1 className="font-light tracking-wider bg-gradient-to-r from-[#ff2764] to-[#00d0ff] bg-clip-text text-transparent text-7xl md:text-8xl lg:text-[6rem] xl:text-[8rem]">
+        <h1 className="font-light tracking-wider bg-gradient-to-r from-[#ff2764] to-[#00d0ff] bg-clip-text text-transparent text-5xl md:text-7xl lg:text-8xl">
           SIDDHARTH
         </h1>
-        <h1 className="font-light tracking-wider bg-gradient-to-r from-[#ff2764] to-[#00d0ff] bg-clip-text text-transparent text-7xl md:text-8xl lg:text-[12rem] xl:text-[8rem] pl-[10%]">
+        <h1 className="font-light tracking-wider bg-gradient-to-r from-[#ff2764] to-[#00d0ff] bg-clip-text text-transparent text-5xl md:text-7xl lg:text-8xl pl-[10%]">
           NASHIKKAR
         </h1>
       </div>
