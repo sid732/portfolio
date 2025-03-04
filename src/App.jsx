@@ -5,7 +5,7 @@ import ThemeToggle from './components/shared/ThemeToggle';
 
 function App() {
   return (
-    <Router>
+    <Router basename="/portfolio">
       <div className="w-full min-h-screen bg-light-bg dark:bg-dark-bg relative transition-colors duration-300">
         <ThemeToggle />
         <div className="h-full overflow-y-auto">
