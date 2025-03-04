@@ -1,4 +1,4 @@
-import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
 
@@ -42,7 +42,6 @@ const Projects = () => {
             github: "#"
         },
         {
-
             title: "Finance Management System",
             duration: "Sep 2024 - Dec 2024",
             association: "Northeastern University",
@@ -56,8 +55,6 @@ const Projects = () => {
             tech: ["Java", "JavaFX", "PostgreSQL", "JDBC", "Git", "Eclipse", "MVC"],
             github: "https://github.com/Byte-Budgeters/FinanceManagementSystem"
         },
-
-
         {
             title: "Social Network Mental Disorders Detection",
             duration: "Nov 2020 - Mar 2021",
@@ -115,7 +112,7 @@ const Projects = () => {
     };
 
     return (
-        <div className="mt-20 px-4 min-h-screen">
+        <div className="mt-20 px-4 min-h-screen bg-light-bg dark:bg-dark-bg">
             <motion.div
                 ref={ref}
                 initial="hidden"
@@ -126,15 +123,15 @@ const Projects = () => {
                     opacity: opacityProgress
                 }}
             >
-                <motion.div className="ml-[10%] md:ml-[20%] mb-16">
+                <motion.div className="ml-[10%] md:ml-[5%] mb-16">
                     <motion.p
-                        className="text-xl text-white"
+                        className="text-xl text-light-text dark:text-dark-text"
                         whileHover={{ scale: 1.05, color: "#a855f7" }}
                     >
                         Featured
                     </motion.p>
                     <motion.h1
-                        className="text-5xl md:text-7xl font-light text-purple-400 mb-4"
+                        className="text-5xl md:text-7xl font-light text-primary-400 mb-4"
                         whileHover={{ scale: 1.05 }}
                     >
                         Projects
@@ -147,9 +144,9 @@ const Projects = () => {
                             key={index}
                             variants={projectVariants}
                             whileHover={{ scale: 1.02 }}
-                            className="bg-[#1e1e1e] rounded-lg p-6 shadow-lg"
+                            className="bg-light-card dark:bg-dark-card rounded-lg p-6 shadow-lg transition-colors duration-300"
                         >
-                            <div className="bg-[#2d2d2d] rounded-t-lg p-2 -mx-6 -mt-6 mb-4 flex items-center justify-between">
+                            <div className="bg-light-header dark:bg-dark-header rounded-t-lg p-2 -mx-6 -mt-6 mb-4 flex items-center justify-between transition-colors duration-300">
                                 <div className="flex gap-2">
                                     <div className="w-3 h-3 rounded-full bg-red-500" />
                                     <div className="w-3 h-3 rounded-full bg-yellow-500" />
@@ -161,7 +158,7 @@ const Projects = () => {
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         whileHover={{ scale: 1.2, color: "#a855f7" }}
-                                        className="text-gray-400 hover:text-white"
+                                        className="text-dark-muted dark:text-light-muted hover:text-primary-400"
                                     >
                                         <FaGithub size={20} />
                                     </motion.a>
@@ -169,19 +166,19 @@ const Projects = () => {
                             </div>
 
                             <motion.h3
-                                className="text-2xl font-semibold text-purple-400 mb-2"
+                                className="text-2xl font-semibold text-primary-400 mb-2"
                                 whileHover={{ color: "#a855f7" }}
                             >
                                 {project.title}
                             </motion.h3>
 
                             <div className="flex items-center gap-2 mb-2">
-                                <p className="text-gray-500">{project.duration}</p>
-                                <span className="text-gray-500">•</span>
-                                <p className="text-gray-500">{project.association}</p>
+                                <p className="text-dark-muted dark:text-light-muted">{project.duration}</p>
+                                <span className="text-dark-muted dark:text-light-muted">•</span>
+                                <p className="text-dark-muted dark:text-light-muted">{project.association}</p>
                             </div>
 
-                            <p className="text-gray-400 mb-4">{project.overview}</p>
+                            <p className="text-light-text dark:text-dark-text mb-4">{project.overview}</p>
 
                             <div className="space-y-2 mb-4">
                                 {project.keyFeatures.map((feature, i) => (
@@ -192,8 +189,8 @@ const Projects = () => {
                                         transition={{ delay: i * 0.1 }}
                                         className="flex items-start"
                                     >
-                                        <span className="text-purple-400 mr-2">▹</span>
-                                        <span className="text-gray-300">{feature}</span>
+                                        <span className="text-primary-400 mr-2">▹</span>
+                                        <span className="text-light-text dark:text-dark-text">{feature}</span>
                                     </motion.div>
                                 ))}
                             </div>
@@ -203,7 +200,7 @@ const Projects = () => {
                                     <motion.span
                                         key={i}
                                         whileHover={{ scale: 1.1 }}
-                                        className="px-3 py-1 text-lg rounded-full bg-purple-500/20 text-purple-300"
+                                        className="px-3 py-1 text-lg rounded-full bg-primary-500/20 text-[#6517b8] dark:text-purple-300"
                                     >
                                         {tech}
                                     </motion.span>

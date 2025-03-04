@@ -67,7 +67,7 @@ const WorkExperience = () => {
   };
 
   const cardVariants = {
-    hidden: { 
+    hidden: {
       opacity: 0,
       y: 50,
       scale: 0.95
@@ -90,41 +90,10 @@ const WorkExperience = () => {
     }
   };
 
-  const techBadgeVariants = {
-    hidden: { scale: 0, opacity: 0 },
-    visible: i => ({
-      scale: 1,
-      opacity: 1,
-      transition: {
-        delay: i * 0.1,
-        type: "spring",
-        stiffness: 200
-      }
-    }),
-    hover: {
-      scale: 1.1,
-      backgroundColor: "rgba(168, 85, 247, 0.4)",
-      transition: { duration: 0.2 }
-    }
-  };
-
-  const titleVariants = {
-    initial: { opacity: 0, y: -20 },
-    animate: { 
-      opacity: 1, 
-      y: 0,
-      transition: {
-        duration: 0.8,
-        type: "spring",
-        stiffness: 100
-      }
-    }
-  };
-
   return (
-    <div className="mt-20 px-4 min-h-screen relative">
+    <div className="mt-20 px-4 min-h-screen bg-light-bg dark:bg-dark-bg relative transition-colors duration-300">
       <motion.div
-        className="fixed top-0 left-0 right-0 h-1 bg-purple-500 origin-left z-50"
+        className="fixed top-0 left-0 right-0 h-1 bg-primary-500 origin-left z-50"
         style={{ scaleX: springProgress }}
       />
 
@@ -133,32 +102,24 @@ const WorkExperience = () => {
         animate="visible"
         variants={containerVariants}
         ref={ref}
-        style={{
-          scale: scaleProgress,
-          opacity: opacityProgress
-        }}
+
       >
-        <motion.div 
-          className="ml-[10%] md:ml-[20%] mb-16 mt-10"
-          variants={titleVariants}
-          initial="initial"
-          animate="animate"
-        >
-          <motion.p 
-            className="text-xl text-white"
+        <motion.div className="ml-[10%] md:ml-[8%] mb-16 mt-10">
+          <motion.p
+            className="text-xl text-light-text dark:text-dark-text transition-colors duration-300"
             whileHover={{ scale: 1.05, color: "#a855f7" }}
           >
             My
           </motion.p>
           <motion.h1
-            className="text-5xl md:text-7xl font-light text-purple-400 mb-4"
+            className="text-5xl md:text-7xl font-light text-primary-400 mb-4"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
             Work
           </motion.h1>
-          <motion.p 
-            className="text-2xl md:text-3xl text-purple-600"
+          <motion.p
+            className="text-2xl md:text-3xl text-primary-600"
             whileHover={{ scale: 1.05 }}
           >
             Experience
@@ -166,75 +127,67 @@ const WorkExperience = () => {
         </motion.div>
 
         <div className="relative max-w-7xl mx-auto">
-          <motion.div 
-            className="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full border-l-2 border-gray-700"
+          <motion.div
+            className="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full border-l-2 border-light-muted dark:border-dark-muted"
             initial={{ height: 0 }}
             animate={{ height: "100%" }}
             transition={{ duration: 1.5 }}
-            style={{
-              scaleY: springProgress
-            }}
+            style={{ scaleY: springProgress }}
           />
-          
+
           {experiences.map((experience, index) => (
             <motion.div
               key={index}
               custom={index}
               variants={cardVariants}
               whileHover="hover"
-              className={`mb-12 bg-[#1e1e1e] rounded-lg shadow-lg 
-                w-full md:w-[48%] relative
+              className={`mb-12 bg-light-card dark:bg-dark-card rounded-lg shadow-lg 
+                w-full md:w-[48%] relative transition-colors duration-300
                 ${index % 2 === 0 ? 'md:mr-auto' : 'md:ml-auto'}`}
             >
-              <motion.div 
-                className="bg-[#2d2d2d] rounded-t-lg p-2 flex items-center gap-2"
-                whileHover={{ backgroundColor: "#363636" }}
+              <motion.div
+                className="bg-light-header dark:bg-dark-header rounded-t-lg p-2 flex items-center gap-2 transition-colors duration-300"
               >
-                <motion.div 
+                <motion.div
                   className="w-3 h-3 rounded-full bg-red-500"
                   whileHover={{ scale: 1.2 }}
                   whileTap={{ scale: 0.9 }}
                 />
-                <motion.div 
+                <motion.div
                   className="w-3 h-3 rounded-full bg-yellow-500"
                   whileHover={{ scale: 1.2 }}
                   whileTap={{ scale: 0.9 }}
                 />
-                <motion.div 
+                <motion.div
                   className="w-3 h-3 rounded-full bg-green-500"
                   whileHover={{ scale: 1.2 }}
                   whileTap={{ scale: 0.9 }}
                 />
               </motion.div>
 
-             <motion.div
-  className={`hidden md:block absolute top-1/2 w-4 h-4 rounded-full bg-purple-500
-    ${index % 2 === 0 ? 
-      'right-0 translate-x-[50%]' : 
-      'left-0 -translate-x-[50%]'}`}
-  initial={{ scale: 0 }}
-  animate={{ scale: 1 }}
-  transition={{ delay: index * 0.3 }}
-  whileHover={{ scale: 1.5, backgroundColor: "#a855f7" }}
-  style={{
-    transform: `translate(${index % 2 === 0 ? '50%' : '-50%'}, -50%)`,
-    zIndex: 10
-  }}
-/>
-              
-              <motion.div 
-                className="p-6 font-mono"
-                whileHover={{ backgroundColor: "rgba(30, 30, 30, 0.8)" }}
-              >
+              <motion.div
+                className={`hidden md:block absolute top-1/2 w-4 h-4 rounded-full bg-primary-500
+                  ${index % 2 === 0 ? 'right-0 translate-x-[50%]' : 'left-0 -translate-x-[50%]'}`}
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ delay: index * 0.3 }}
+                whileHover={{ scale: 1.5, backgroundColor: "#a855f7" }}
+                style={{
+                  transform: `translate(${index % 2 === 0 ? '50%' : '-50%'}, -50%)`,
+                  zIndex: 10
+                }}
+              />
+
+              <motion.div className="p-6 font-mono">
                 <div className="flex items-center mb-2">
-                  <motion.span 
+                  <motion.span
                     className="text-green-400"
                     whileHover={{ scale: 1.2, rotate: 90 }}
                   >
                     ❯
                   </motion.span>
-                  <motion.h2 
-                    className="ml-2 text-xl md:text-4xl font-semibold text-white"
+                  <motion.h2
+                    className="ml-2 text-xl md:text-4xl font-semibold text-light-text dark:text-dark-text transition-colors duration-300"
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.2 }}
@@ -244,13 +197,13 @@ const WorkExperience = () => {
                   </motion.h2>
                 </div>
                 <div className="ml-4">
-                  <motion.h3 
-                    className="text-lg md:text-2xl text-purple-400"
+                  <motion.h3
+                    className="text-lg md:text-2xl text-primary-400"
                     whileHover={{ scale: 1.02 }}
                   >
                     {experience.company}
                   </motion.h3>
-                  <motion.p className="text-xl text-gray-500">
+                  <motion.p className="text-xl text-light-muted dark:text-dark-muted">
                     {experience.duration}
                   </motion.p>
                   <motion.ul className="text-xl mt-4 space-y-2">
@@ -261,16 +214,16 @@ const WorkExperience = () => {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: false }}
                         transition={{ delay: 0.1 * i }}
-                        className="text-gray-300 flex items-start"
+                        className="text-light-text dark:text-dark-text flex items-start"
                         whileHover={{ x: 10 }}
                       >
-                        <motion.span 
-                          className="text-xl text-purple-400 mr-2"
+                        <motion.span
+                          className="text-xl text-primary-400 mr-2"
                           whileHover={{ scale: 1.2, rotate: 180 }}
                         >
                           ▹
                         </motion.span>
-                        <span>{point}</span>
+                        <span className="text-light-text dark:text-dark-text">{point}</span>
                       </motion.li>
                     ))}
                   </motion.ul>
@@ -278,10 +231,11 @@ const WorkExperience = () => {
                     {experience.tech.map((tech, i) => (
                       <motion.span
                         key={i}
-                        custom={i}
-                        variants={techBadgeVariants}
-                        whileHover="hover"
-                        className="px-3 py-1 text-xl rounded-full bg-purple-500/20 text-purple-300 cursor-pointer"
+                        initial={{ opacity: 0, scale: 0 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ delay: i * 0.1 }}
+                        whileHover={{ scale: 1.1 }}
+                        className="px-3 py-1 text-xl rounded-full bg-primary-500/20 text-[#6517b8] dark:text-purple-300"
                         whileTap={{ scale: 0.95 }}
                       >
                         {tech}

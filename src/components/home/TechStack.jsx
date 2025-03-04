@@ -60,8 +60,9 @@ $ focus
 > Cloud-native solutions
 > Distributed systems
 > Full-stack development`;
+
     return (
-        <div className="mt-20 px-4">
+        <div className="mt-20 px-4 bg-light-bg dark:bg-dark-bg transition-colors duration-300">
             <motion.div
                 ref={titleRef}
                 initial={{ opacity: 0, y: 20 }}
@@ -72,10 +73,10 @@ $ focus
                 transition={{ duration: 0.8 }}
                 className="max-w-6xl mx-auto"
             >
-                <div className="ml-[10%] md:ml-[20%] mb-16 mt-10">
-                    <p className="text-xl text-white">A</p>
+                <div className="ml-[10%] md:ml-[-20%] mb-16 mt-10">
+                    <p className="text-xl text-light-text dark:text-dark-text">A</p>
                     <motion.h1
-                        className="text-5xl md:text-7xl font-light text-purple-400 mb-4"
+                        className="text-5xl md:text-7xl font-light text-primary-400 mb-4"
                         animate={{
                             scale: titleInView ? 1 : 0.8,
                             opacity: titleInView ? 1 : 0
@@ -85,7 +86,7 @@ $ focus
                         Fullstack
                     </motion.h1>
                     <motion.p
-                        className="text-2xl md:text-3xl text-purple-600"
+                        className="text-2xl md:text-3xl text-primary-600"
                         animate={{
                             x: titleInView ? 0 : -50,
                             opacity: titleInView ? 1 : 0
@@ -97,9 +98,11 @@ $ focus
                 </div>
 
                 {/* Terminal Window */}
+
                 <motion.div
                     ref={terminalRef}
-                    className="mx-auto max-w-4xl bg-[#1e1e1e] rounded-lg shadow-lg mb-12 relative"
+                    className="mx-auto max-w-4xl bg-light-card dark:bg-dark-card rounded-lg shadow-lg mb-12 
+              relative transition-colors duration-300"
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{
                         opacity: terminalInView ? 1 : 0,
@@ -108,30 +111,31 @@ $ focus
                     whileHover={{ scale: 1.02 }}
                     transition={{ duration: 0.5 }}
                 >
-                    <div className="bg-[#2d2d2d] rounded-t-lg p-2 flex items-center gap-2">
+                    <div className="bg-light-header dark:bg-dark-header rounded-t-lg p-2 flex items-center gap-2 
+                  transition-colors duration-300">
                         <div className="w-3 h-3 rounded-full bg-red-500" />
                         <div className="w-3 h-3 rounded-full bg-yellow-500" />
                         <div className="w-3 h-3 rounded-full bg-green-500" />
                     </div>
-                    <div className="p-8 font-mono">
-    <div className="flex items-start">
-        <span className="text-green-400 mr-4">❯</span>
-        <pre className="text-gray-300 whitespace-pre-wrap text-lg">
-            {codeSnippet.split('\n').map((line, index) => (
-                <span key={index}>
-                    {line.startsWith('$') ? (
-                        <span className=" text-purple-500 text-xl">{line}</span>
-                    ) : line.startsWith('>') ? (
-                        <span className="text-blue-400">{line}</span>
-                    ) : (
-                        line
-                    )}
-                    {'\n'}
-                </span>
-            ))}
-        </pre>
-    </div>
-</div>
+                    <div className="p-8 font-mono bg-light-card dark:bg-dark-card transition-colors duration-300">
+                        <div className="flex items-start">
+                            <span className="text-primary-400 mr-4">❯</span>
+                            <pre className="text-dark-text dark:text-light-text whitespace-pre-wrap text-lg">
+                                {codeSnippet.split('\n').map((line, index) => (
+                                    <span key={index}>
+                                        {line.startsWith('$') ? (
+                                            <span className="text-[#3b0575]  dark:text-purple-500 text-xl">{line}</span>
+                                        ) : line.startsWith('>') ? (
+                                            <span className="text-[#6517b8] dark:text-purple-400">{line}</span>
+                                        ) : (
+                                            <span className="text-dark-text dark:text-light-text">{line}</span>
+                                        )}
+                                        {'\n'}
+                                    </span>
+                                ))}
+                            </pre>
+                        </div>
+                    </div>
                 </motion.div>
 
                 {/* Tech Icons Grid */}
@@ -165,14 +169,17 @@ $ focus
                             className="group flex flex-col items-center gap-3"
                         >
                             <motion.div
-                                className="w-20 h-20 flex items-center justify-center rounded-xl bg-gray-800/50 backdrop-blur-sm
-                                         shadow-lg group-hover:shadow-2xl group-hover:shadow-purple-500/20"
+                                className="w-20 h-20 flex items-center justify-center rounded-xl 
+                                         bg-light-card dark:bg-dark-card backdrop-blur-sm
+                                         shadow-lg group-hover:shadow-2xl group-hover:shadow-primary-500/20
+                                         transition-colors duration-300"
                                 whileHover={{ y: -5 }}
                             >
                                 <Icon className="w-10 h-10 transition-transform" style={{ color }} />
                             </motion.div>
                             <motion.span
-                                className="text-base text-gray-400 group-hover:text-purple-400 transition-colors"
+                                className="text-base text-dark-muted dark:text-light-muted 
+                                         group-hover:text-primary-400 transition-colors"
                                 initial={{ opacity: 0 }}
                                 animate={{
                                     opacity: techGridInView ? 1 : 0
