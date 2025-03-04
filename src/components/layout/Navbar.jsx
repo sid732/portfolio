@@ -1,15 +1,6 @@
-import { motion } from 'framer-motion';
-import { Home, Clock, Folder, Star, Mail } from 'lucide-react';
-
-const navItems = [
-  { icon: Home, label: 'Home' },
-  { icon: Clock, label: 'Experience' },
-  { icon: Folder, label: 'Projects' },
-  { icon: Star, label: 'Skills' },
-  { icon: Mail, label: 'Contact' },
-];
-
 const Navbar = () => {
+  const { isDarkMode } = useTheme();
+  
   return (
     <motion.div 
       initial={{ y: 50, opacity: 0 }}
@@ -17,13 +8,17 @@ const Navbar = () => {
       transition={{ duration: 0.5 }}
       className="fixed bottom-8 left-0 right-0 flex justify-center"
     >
-      <div className="bg-gray-800/40 backdrop-blur-md px-4 py-2 md:px-8 md:py-4 rounded-full flex gap-4 md:gap-8 justify-center">
+      <div className={`${
+        isDarkMode ? 'bg-secondary/40' : 'bg-gray-200/40'
+      } backdrop-blur-md px-4 py-2 md:px-8 md:py-4 rounded-full flex gap-4 md:gap-8 justify-center`}>
         {navItems.map((item, index) => (
           <motion.button
             key={item.label}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
-            className="hover:text-pink-500 transition-colors"
+            className={`${
+              isDarkMode ? 'hover:text-accent' : 'hover:text-primary'
+            } transition-colors`}
           >
             <item.icon size={24} />
           </motion.button>
@@ -32,5 +27,3 @@ const Navbar = () => {
     </motion.div>
   );
 };
-
-export default Navbar;

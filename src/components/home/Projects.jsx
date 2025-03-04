@@ -1,8 +1,10 @@
-import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
+import { useTheme } from '../../contexts/ThemeContext';
 
 const Projects = () => {
+    const { isDarkMode } = useTheme();
     const [ref, inView] = useInView({
         threshold: 0.1,
         triggerOnce: false
@@ -42,7 +44,6 @@ const Projects = () => {
             github: "#"
         },
         {
-
             title: "Finance Management System",
             duration: "Sep 2024 - Dec 2024",
             association: "Northeastern University",
@@ -56,8 +57,6 @@ const Projects = () => {
             tech: ["Java", "JavaFX", "PostgreSQL", "JDBC", "Git", "Eclipse", "MVC"],
             github: "https://github.com/Byte-Budgeters/FinanceManagementSystem"
         },
-
-
         {
             title: "Social Network Mental Disorders Detection",
             duration: "Nov 2020 - Mar 2021",
@@ -128,7 +127,7 @@ const Projects = () => {
             >
                 <motion.div className="ml-[10%] md:ml-[20%] mb-16">
                     <motion.p
-                        className="text-xl text-white"
+                        className={`text-xl ${isDarkMode ? 'text-white' : 'text-gray-800'}`}
                         whileHover={{ scale: 1.05, color: "#a855f7" }}
                     >
                         Featured
@@ -147,9 +146,13 @@ const Projects = () => {
                             key={index}
                             variants={projectVariants}
                             whileHover={{ scale: 1.02 }}
-                            className="bg-[#1e1e1e] rounded-lg p-6 shadow-lg"
+                            className={`${
+                                isDarkMode ? 'bg-[#1e1e1e]' : 'bg-white'
+                            } rounded-lg p-6 shadow-lg`}
                         >
-                            <div className="bg-[#2d2d2d] rounded-t-lg p-2 -mx-6 -mt-6 mb-4 flex items-center justify-between">
+                            <div className={`${
+                                isDarkMode ? 'bg-[#2d2d2d]' : 'bg-gray-100'
+                            } rounded-t-lg p-2 -mx-6 -mt-6 mb-4 flex items-center justify-between`}>
                                 <div className="flex gap-2">
                                     <div className="w-3 h-3 rounded-full bg-red-500" />
                                     <div className="w-3 h-3 rounded-full bg-yellow-500" />
@@ -161,7 +164,9 @@ const Projects = () => {
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         whileHover={{ scale: 1.2, color: "#a855f7" }}
-                                        className="text-gray-400 hover:text-white"
+                                        className={`${
+                                            isDarkMode ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'
+                                        }`}
                                     >
                                         <FaGithub size={20} />
                                     </motion.a>
@@ -176,12 +181,18 @@ const Projects = () => {
                             </motion.h3>
 
                             <div className="flex items-center gap-2 mb-2">
-                                <p className="text-gray-500">{project.duration}</p>
-                                <span className="text-gray-500">•</span>
-                                <p className="text-gray-500">{project.association}</p>
+                                <p className={`${isDarkMode ? 'text-gray-500' : 'text-gray-600'}`}>
+                                    {project.duration}
+                                </p>
+                                <span className={`${isDarkMode ? 'text-gray-500' : 'text-gray-600'}`}>•</span>
+                                <p className={`${isDarkMode ? 'text-gray-500' : 'text-gray-600'}`}>
+                                    {project.association}
+                                </p>
                             </div>
 
-                            <p className="text-gray-400 mb-4">{project.overview}</p>
+                            <p className={`${isDarkMode ? 'text-gray-400' : 'text-gray-600'} mb-4`}>
+                                {project.overview}
+                            </p>
 
                             <div className="space-y-2 mb-4">
                                 {project.keyFeatures.map((feature, i) => (
@@ -193,7 +204,9 @@ const Projects = () => {
                                         className="flex items-start"
                                     >
                                         <span className="text-purple-400 mr-2">▹</span>
-                                        <span className="text-gray-300">{feature}</span>
+                                        <span className={`${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                                            {feature}
+                                        </span>
                                     </motion.div>
                                 ))}
                             </div>
@@ -203,7 +216,11 @@ const Projects = () => {
                                     <motion.span
                                         key={i}
                                         whileHover={{ scale: 1.1 }}
-                                        className="px-3 py-1 text-lg rounded-full bg-purple-500/20 text-purple-300"
+                                        className={`px-3 py-1 text-lg rounded-full ${
+                                            isDarkMode 
+                                                ? 'bg-purple-500/20 text-purple-300' 
+                                                : 'bg-purple-100 text-purple-600'
+                                        }`}
                                     >
                                         {tech}
                                     </motion.span>
