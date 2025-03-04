@@ -1,11 +1,28 @@
+import { motion } from 'framer-motion';
+import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
+
 const Footer = () => {
-  const { isDarkMode } = useTheme();
-  
+  const socialLinks = [
+    {
+      icon: <FaGithub size={24} />,
+      url: "https://github.com/yourgithub",
+      label: "GitHub"
+    },
+    {
+      icon: <FaLinkedin size={24} />,
+      url: "https://linkedin.com/in/yourlinkedin",
+      label: "LinkedIn"
+    },
+    {
+      icon: <FaEnvelope size={24} />,
+      url: "mailto:your.email@example.com",
+      label: "Email"
+    }
+  ];
+
   return (
     <motion.footer 
-      className={`w-full ${
-        isDarkMode ? 'bg-secondary' : 'bg-gray-100'
-      } py-8 mt-20`}
+      className="w-full bg-[#1e1e1e] py-8 mt-20"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
@@ -19,10 +36,8 @@ const Footer = () => {
                 href={link.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`${
-                  isDarkMode ? 'text-gray-400 hover:text-accent' : 'text-gray-600 hover:text-primary'
-                } transition-colors`}
-                whileHover={{ scale: 1.2 }}
+                className="text-gray-400 hover:text-purple-400 transition-colors"
+                whileHover={{ scale: 1.2, color: "#a855f7" }}
                 whileTap={{ scale: 0.9 }}
                 aria-label={link.label}
               >
@@ -32,15 +47,22 @@ const Footer = () => {
           </div>
           
           <motion.p 
-            className={`${
-              isDarkMode ? 'text-gray-400' : 'text-gray-600'
-            } text-sm`}
-            whileHover={{ color: isDarkMode ? '#6e56cf' : '#1a1625' }}
+            className="text-gray-400 text-sm"
+            whileHover={{ color: "#a855f7" }}
           >
             Built with React & Framer Motion
+          </motion.p>
+          
+          <motion.p 
+            className="text-gray-500 text-sm"
+            whileHover={{ color: "#a855f7" }}
+          >
+            © {new Date().getFullYear()} Your Name. All rights reserved.
           </motion.p>
         </div>
       </div>
     </motion.footer>
   );
 };
+
+export default Footer;
