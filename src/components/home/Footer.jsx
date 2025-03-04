@@ -5,17 +5,17 @@ const Footer = () => {
   const socialLinks = [
     {
       icon: <FaGithub size={24} />,
-      url: "https://github.com/yourgithub",
+      url: "https://github.com/sid732",
       label: "GitHub"
     },
     {
       icon: <FaLinkedin size={24} />,
-      url: "https://linkedin.com/in/yourlinkedin",
+      url: "https://linkedin.com/in/siddharth-nashikkar",
       label: "LinkedIn"
     },
     {
       icon: <FaEnvelope size={24} />,
-      url: "mailto:your.email@example.com",
+      url: "mailto:nashikkar.siddharth@gmail.com",
       label: "Email"
     }
   ];
@@ -57,7 +57,7 @@ const Footer = () => {
             className="text-gray-500 text-sm"
             whileHover={{ color: "#a855f7" }}
           >
-            © {new Date().getFullYear()} Your Name. All rights reserved.
+            © {new Date().getFullYear()} Siddharth Nashikkar. All rights reserved.
           </motion.p>
         </div>
       </div>
