@@ -67,7 +67,11 @@ const Projects = () => {
                 "Windows GUI application"
             ],
             tech: ["Python", "Machine Learning", "KNN", "Tkinter", "Random Forest"],
-            github: "https://github.com/sid732/Social-Network-Metal-Disorders-Detection"
+            github: "https://github.com/sid732/Social-Network-Metal-Disorders-Detection",
+            publication: {
+                citation: "Nashikkar, S., Hanamar, A., Pathan, N., & Mulla, H. (2023). Social Network Mental Disorders Detection. International Journal for Research in Applied Science & Engineering Technology (IJRASET), 11(IX)",
+                doi: "http://dx.doi.org/10.22214/ijraset.2023.55901"
+            }
         },
         {
             title: "Recession Prediction",
@@ -81,7 +85,11 @@ const Projects = () => {
                 "Interactive visualization"
             ],
             tech: ["Python", "SVM", "Linear Regression", "Matplotlib", "Tkinter"],
-            github: "https://github.com/sid732/RecessionPrediction"
+            github: "https://github.com/sid732/RecessionPrediction",
+            publication: {
+                citation: "Nashikkar, S., Hanamar, A., Pathan, N., & Mulla, H. (2023). Recession Prediction using SVM and Linear Regression. International Journal for Research in Applied Science & Engineering Technology, 11(IX)",
+                doi: "http://dx.doi.org/10.22214/ijraset.2023.55902"
+            }
         }
     ];
 
@@ -194,6 +202,33 @@ const Projects = () => {
                                     </motion.div>
                                 ))}
                             </div>
+
+                            {project.publication && (
+                                <motion.div 
+                                    className="mt-4 mb-4 p-4 bg-primary-500/5 rounded-lg border border-primary-500/20"
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    transition={{ delay: 0.2 }}
+                                >
+                                    <div className="flex items-center gap-2 mb-2">
+                                        <FaExternalLinkAlt className="text-primary-400" size={16} />
+                                        <h4 className="text-primary-400 font-semibold">Publication</h4>
+                                    </div>
+                                    <p className="text-light-text dark:text-dark-text text-sm italic mb-2">
+                                        {project.publication.citation}
+                                    </p>
+                                    <motion.a
+                                        href={project.publication.doi}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="text-primary-400 text-sm hover:text-primary-500 flex items-center gap-2"
+                                        whileHover={{ x: 5 }}
+                                    >
+                                        <span>View Publication</span>
+                                        <FaExternalLinkAlt size={12} />
+                                    </motion.a>
+                                </motion.div>
+                            )}
 
                             <div className="flex flex-wrap gap-2 mt-4">
                                 {project.tech.map((tech, i) => (
