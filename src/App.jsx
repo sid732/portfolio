@@ -2,12 +2,14 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import HomePage from './pages/Home';
 import ThemeToggle from './components/shared/ThemeToggle';
+import ResumeChat from './components/shared/ResumeChat';
 
 function App() {
   return (
-    <Router> {/* Remove basename="/portfolio" */}
+    <Router>
       <div className="w-full min-h-screen bg-light-bg dark:bg-dark-bg relative transition-colors duration-300">
         <ThemeToggle />
+        <ResumeChat />
         <div className="h-full overflow-y-auto">
           <AnimatePresence mode='wait'>
             <Routes>
