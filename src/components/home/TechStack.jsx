@@ -73,7 +73,7 @@ $ focus
                 transition={{ duration: 0.8 }}
                 className="max-w-6xl mx-auto"
             >
-                <div className="ml-[10%] md:ml-[-20%] mb-16 mt-10">
+                <div className="  mb-16 mt-10">
                     <p className="text-xl text-light-text dark:text-dark-text">A</p>
                     <motion.h1
                         className="text-5xl md:text-7xl font-light text-primary-400 mb-4"
