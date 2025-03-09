@@ -6,6 +6,7 @@ import WorkExperience from '../components/home/WorkExperiance';
 import Navbar from '../components/layout/Navbar';
 import Projects from '../components/home/Projects';
 import Footer from '../components/home/Footer';
+import Contact from '../components/home/Contact';
 
 const HomePage = () => {
   const footerRef = useRef(null);
@@ -48,8 +49,11 @@ const HomePage = () => {
         <section className="w-full">
           <Projects />
         </section>
+        <section className="w-full">
+          <Contact />
+        </section>
 
-        <section 
+        <section
           ref={footerRef}
           className="w-full"
         >
