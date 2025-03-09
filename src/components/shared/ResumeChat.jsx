@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MessageSquare, Send, Loader, ExternalLink } from 'lucide-react';
+import { MessageSquare, Send, Loader } from 'lucide-react';
 
 const ResumeChat = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -15,36 +15,10 @@ const ResumeChat = () => {
                 role: 'Senior Software Engineer',
                 company: 'Persistent Systems Limited',
                 duration: 'Sep 2023 - Aug 2024',
-                skills: ['Java', 'Spring Boot', 'React', 'AWS', 'Oracle', 'Cloud'],
                 achievements: [
-                    'Led development of Tax Accelerator integrating Oracle ERP Cloud with Vertex O-Series tax engine',
-                    'Streamlined customer onboarding process, resulting in 5 new customer integrations',
-                    'Optimized 25+ BI Publisher reports, achieving 30% increase in reporting accuracy',
-                    'Designed and implemented uplifted onboarding process for Oracle customers'
-                ]
-            },
-            {
-                role: 'Software Engineer',
-                company: 'Persistent Systems Limited',
-                duration: 'Jun 2021 - Sep 2023',
-                skills: ['Spring Boot', 'React', 'PostgreSQL', 'Microservices', 'Redux', 'SQL'],
-                achievements: [
-                    'Built 100+ REST APIs using Java/Spring Boot microservices with React/Redux Saga frontend',
-                    'Improved data engineering efficiency by 45% through SQL, Oracle, PostgreSQL integration',
-                    'Achieved 40% increase in customer satisfaction through custom Oracle ERP-Vertex integrations',
-                    'Managed tax accruals for US and 50+ VAT countries in Oracle Inventory systems'
-                ]
-            },
-            {
-                role: 'Software Engineering Intern',
-                company: 'Persistent Systems Limited',
-                duration: 'Jan 2021 - Jul 2021',
-                skills: ['React', 'TypeScript', 'Git', 'DevOps', 'Testing', 'CI/CD'],
-                achievements: [
-                    'Developed full-stack applications using React, Redux, TypeScript, and Spring Boot',
-                    'Built appointment booking system improving service accessibility',
-                    'Gained expertise in Git, DevOps, Agile, Testing, and Cloud technologies',
-                    'Implemented unit tests and CI/CD pipelines for automated deployments'
+                    'Led development of Tax Accelerator integrating Oracle ERP Cloud with Vertex O-Series tax engine.',
+                    'Streamlined customer onboarding process, resulting in 5 new customer integrations.',
+                    'Optimized 25+ BI Publisher reports, achieving 30% increase in reporting accuracy.'
                 ]
             }
         ],
@@ -53,62 +27,54 @@ const ResumeChat = () => {
                 degree: 'MS in Software Engineering',
                 school: 'Northeastern University',
                 gpa: '3.78/4.0',
-                duration: '2024 - 2025'
-            },
-            {
-                degree: 'BE in Computer Engineering',
-                school: 'D. Y. Patil College of Engineering',
-                gpa: '3.5/4.0',
-                duration: '2017 - 2021'
+                duration: '2024 - 2026'
             }
         ],
-        publications: [
+        skills: ['Java', 'Spring Boot', 'React', 'AWS', 'Docker', 'Python'],
+        projects: [
             {
-                title: 'Recession Prediction using SVM and Linear Regression',
-                journal: 'International Journal for Research in Applied Science & Engineering Technology',
-                year: '2023',
-                doi: 'http://dx.doi.org/10.22214/ijraset.2023.55902'
+                name: 'Aurora Tracker System',
+                description: 'Developed a real-time aurora prediction web app using React, Node.js, and MongoDB, integrated with Mapbox.',
+                duration: 'Sep 2024 - Dec 2024'
             },
             {
-                title: 'Social Network Mental Disorders Detection',
-                journal: 'International Journal for Research in Applied Science & Engineering Technology',
-                year: '2023',
-                doi: 'http://dx.doi.org/10.22214/ijraset.2023.55901'
+                name: 'Cloud Infrastructure and DevOps Pipeline',
+                description: 'Deployed a Spring Boot app with Terraform, CI/CD (GitHub Actions), AWS infra automation, and Packer-built AMIs.',
+                duration: 'Dec 2024 - May 2025'
             }
-        ],
-        skills: [
-            'Java', 'Spring Boot', 'React', 'AWS', 'Docker', 'Python',
-            'PostgreSQL', 'Node.js', 'TypeScript', 'Oracle', 'MongoDB', 'GitHub',
-            'Microservices', 'Redux', 'CI/CD', 'DevOps', 'Agile', 'Testing'
         ]
     };
 
     const processQuestion = (question) => {
         question = question.toLowerCase();
-        
-        if (question.includes('experience') || question.includes('work')) {
-            return resumeData.experience.map(exp => 
-                `**${exp.role}** at ${exp.company} (${exp.duration})\n${exp.achievements.map(a => `• ${a}`).join('\n')}`
-            ).join('\n\n');
-        }
-        
-        if (question.includes('education') || question.includes('study') || question.includes('degree')) {
-            return resumeData.education.map(edu => 
-                `**${edu.degree}** from ${edu.school}\n• GPA: ${edu.gpa}\n• Duration: ${edu.duration}`
-            ).join('\n\n');
-        }
-        
-        if (question.includes('skills') || question.includes('technologies')) {
-            return `**Technical Skills:**\n\n${resumeData.skills.join(', ')}`;
-        }
-        
-        if (question.includes('publication') || question.includes('research') || question.includes('paper')) {
-            return resumeData.publications.map(pub => 
-                `**${pub.title}**\n• Published in ${pub.journal} (${pub.year})\n• [View Publication](${pub.doi})`
+
+        if (question.includes('experience')) {
+            return resumeData.experience.map(exp =>
+                `**${exp.role}** at ${exp.company} (${exp.duration})\n\n${exp.achievements.map(a => `• ${a}`).join('\n')}`
             ).join('\n\n');
         }
 
-        return "I can help you learn about Siddharth's:\n• Work Experience\n• Education\n• Technical Skills\n• Publications\n\nWhat would you like to know?";
+        if (question.includes('education')) {
+            return resumeData.education.map(edu =>
+                `**${edu.degree}** from ${edu.school}\n\n• GPA: ${edu.gpa}\n• Duration: ${edu.duration}`
+            ).join('\n\n');
+        }
+
+        if (question.includes('skills')) {
+            return `**Technical Skills:**\n\n${resumeData.skills.join(', ')}`;
+        }
+
+        if (question.includes('project')) {
+            return resumeData.projects.map(proj =>
+                `**${proj.name}**\n\n• ${proj.description}\n• Duration: ${proj.duration}`
+            ).join('\n\n');
+        }
+
+        if (question.includes('contact')) {
+            return "I'm sorry, but I can't share personal contact details.";
+        }
+
+        return "I can help you learn about Siddharth's:\n\n• Work Experience\n• Education\n• Technical Skills\n• Projects\n• Achievements\n\nWhat would you like to know?";
     };
 
     const handleSubmit = async (e) => {
@@ -137,7 +103,7 @@ const ResumeChat = () => {
         if (isOpen && messages.length === 0) {
             setMessages([{ 
                 type: 'bot', 
-                content: "👋 Hi! I'm Siddharth's resume bot. I can tell you about:\n• Work Experience\n• Education\n• Technical Skills\n• Publications\n\nWhat would you like to know?" 
+                content: "👋 Hi! I'm Siddharth's bot. I can tell you about:\n\n• Work Experience\n• Education\n• Technical Skills\n• Projects\n• Achievements\n\nWhat would you like to know?" 
             }]);
         }
     }, [isOpen]);
@@ -159,10 +125,10 @@ const ResumeChat = () => {
                         initial={{ opacity: 0, y: 100 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: 100 }}
-                        className="fixed bottom-24 right-4 w-96 h-[500px] bg-light-card dark:bg-dark-card rounded-lg shadow-xl flex flex-col overflow-hidden z-50"
+                        className="fixed bottom-24 right-4 w-96 h-[500px] bg-white dark:bg-dark-card rounded-lg shadow-xl flex flex-col overflow-hidden z-50"
                     >
                         <div className="bg-primary-500 p-4 text-white flex justify-between items-center">
-                            <h3 className="font-semibold">Resume Chat</h3>
+                            <h3 className="font-semibold">Chat Bot</h3>
                             <button 
                                 onClick={() => setIsOpen(false)}
                                 className="text-white hover:text-red-200"
@@ -195,7 +161,7 @@ const ResumeChat = () => {
                             ))}
                             {isLoading && (
                                 <div className="flex justify-start">
-                                    <div className="bg-gray-800 dark:bg-gray-100 p-3 rounded-lg">
+                                    <div className="bg-gray-100 dark:bg-gray-800 p-3 rounded-lg">
                                         <Loader className="w-5 h-5 animate-spin" />
                                     </div>
                                 </div>
@@ -204,7 +170,7 @@ const ResumeChat = () => {
 
                         <form 
                             onSubmit={handleSubmit}
-                            className="p-4 border-t border-gray-700 dark:border-gray-200 bg-light-card dark:bg-dark-card"
+                            className="p-4 border-t border-gray-700 dark:border-gray-200 bg-white dark:bg-dark-card"
                         >
                             <div className="flex gap-2">
                                 <input
