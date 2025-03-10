@@ -2,7 +2,6 @@ import { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import ReCAPTCHA from "react-google-recaptcha";
 import emailjs from '@emailjs/browser';
-import config from '../../config/env.config';
 
 const Contact = () => {
     const formRef = useRef();
