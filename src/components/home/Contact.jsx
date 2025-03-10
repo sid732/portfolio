@@ -26,10 +26,10 @@ const Contact = () => {
         try {
             // Replace these with your EmailJS credentials
             const result = await emailjs.sendForm(
-                config.emailjs.serviceId,
-                config.emailjs.templateId,
+                mport.meta.env.VITE_EMAILJS_SERVICE_ID,
+                mport.meta.env.VITE_EMAILJS_TEMPLATE_ID,
                 formRef.current,
-                config.emailjs.publicKey
+                mport.meta.env.VITE_EMAILJS_PUBLIC_KEY
             );
 
             setSubmitStatus({
@@ -124,7 +124,7 @@ const Contact = () => {
                     <div className="flex justify-center">
                         <ReCAPTCHA
                             ref={recaptchaRef}
-                            sitekey={config.recaptcha.siteKey}
+                            sitekey={import.meta.env.VITE_RECAPTCHA_SITE_KEY}
                             onChange={(value) => setRecaptchaValue(value)}
                         />
                     </div>
